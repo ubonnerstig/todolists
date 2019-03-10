@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To do lists</title>
+
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body onload="init(), loopLists()">
+    <div class="container-fluid wrap">
+        <header class="row">
+            <div class="col-12">
+                <h1>My to do lists</h1>
+            </div>
+        
+            
+            <!-- Button trigger modal -->
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Create new list
+                </button>
+                <button type="button" class="sort" id="alphabet" onclick="sort('alphabet')"><i class="fas fa-sort-alpha-down"></i></button>
+                <button type="button" class="sort" id="date" onclick="sort('date')"><i class="fas fa-sort-numeric-down"></i></button>
+                <button type="button" class="sort" id="number" onclick="sort('number')"><i class="fas fa-sort-amount-down"></i></button>
+            </div>
+        
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Create new list</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="newList" action="?">
+                                <input type="text" id="addTitle" name ="listTitle" placeholder="List title..."/><br />
+                                <br />
+                                Items: <br />
+                                <div id="listContainer">
+                                    <i class="fas fa-circle"></i> <input type="text" name="item0" class="listItem"/><br>                    
+                                </div>
+                            </form>
+                            <button id="addRow" type="button" onclick="addRow(event)"><i class="fas fa-plus"></i> add row...</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" onclick="formList()" class="btn btn-primary" form="newList" value="save">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="row" id="allTheLists"></div>
+
+    </div>
+    
+</body>
+</html>
